@@ -8,22 +8,19 @@ router.get('/', (req, res) => {
 });
 
 router.post('/send', (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const subject = req.body.subject;
-    const message = req.body.message;
-    console.log(`email: ${email}\n`);
+    console.log("POST Fired!");
+    console.log(req.body)
     // output for our message
     const output = `
       <h2>You have a new contact request</h2>
       <h3>Contact Details</h3>
       <ul>  
-        <li>Name: ${name}</li>
-        <li>Email: ${email}</li>
-        <li>Subject: ${subject}</li>
+        <li>Name: ${req.body.name}</li>
+        <li>Email: ${req.body.email}</li>
+        <li>Subject: ${req.body.subject}</li>
       </ul>
       <h3>Message</h3>
-      <p>${message}</p>
+      <p>${req.body.message}</p>
     `;
   
     // create reusable transporter object using the default SMTP transport
