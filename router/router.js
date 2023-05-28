@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log("Posting to /sendmail!");
+  console.log("Posting to /!");
   console.log("Data:", req.body);
 
   // Construct the email content using the form data
