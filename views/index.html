@@ -292,29 +292,35 @@
         </div>
     
         <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="/sendmail" method="POST" role="form" class="php-email-form">
-            <div class="row">
-                <div class="col-md-6 form-group">
-                <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
+
+            <form action="/" method="post" class="php-email-form" enctype="application/x-www-form-urlencoded">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6 mt-3 mt-md-0">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                  </div>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input name="email" type="email" class="form-control"  id="email" placeholder="Your Email" required>
+                <div class="form-group mt-3">
+                  <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                 </div>
-            </div>
-            <div class="form-group mt-3">
-                <input type="text" name="subject" class="form-control"  id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group mt-3">
-                <textarea id="message" class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message"></div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-        </div>
+                <div class="form-group mt-3">
+                  <textarea name="message" rows="8" class="form-control" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+              </form>
+              
+
+          </div>
+
         </div>
     </div>
     </section><!-- End Contact Section -->
@@ -366,10 +372,11 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/contactForm.js"></script>
 
 </body>
 </html>
