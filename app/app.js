@@ -7,10 +7,9 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.static('views'));
 
-// For accepting post from data
-app.use(bodyParser.urlencoded({ extended: true }));
-// parse application/json
-app.use(bodyParser.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 
 

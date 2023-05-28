@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer')
 
+// This line allows express to parse JSON
+const app = express();
+
+
 
 // Home route
 router.get('/', (req, res) => {
@@ -9,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log("Posting to /!");
+  console.log("Posting to /...");
   console.log("Data:", req.body);
 
   // Construct the email content using the form data

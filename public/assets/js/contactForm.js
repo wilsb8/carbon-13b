@@ -7,29 +7,47 @@ form.addEventListener('submit', async (event) => {
 
   try {
     const formData = new FormData(form);
+
+    // Convert FormData to JSON
+    const formDataJSON = Object.fromEntries(formData.entries());
+
     const response = await fetch('/', {
       method: 'POST',
-      body: formData,
-      redirect: 'manual', // Prevent automatic redirect
+      body: JSON.stringify(formDataJSON), // send JSON data
+      headers: {
+        'Content-Type': 'application/json' // specify content type
+      },
+      redirect: 'manual',
     });
 
+    const responseBody = await response.text();
+    console.log('*** Response Body:', responseBody);
+
     if (response.ok) {
-      // Show success message
+      if (response.headers.get('content-type').includes('application/json')) {
+        const data = JSON.parse(responseBody);  // Parse the response body as JSON
+        console.log('*** Data:', data);
+        successDiv.textContent = data.message;
+      }
+
       successDiv.style.display = 'block';
       errorDiv.style.display = 'none';
-      form.reset(); // Clear the form
+      form.reset();
 
-      // Optionally, scroll to the success message
       successDiv.scrollIntoView({ behavior: 'smooth' });
     } else {
-      const data = await response.json();
-      // Show error message from the JSON response
-      errorDiv.style.display = 'block';
-      successDiv.style.display = 'none';
-      errorDiv.textContent = data.error;
+      if (response.headers.get('content-type').includes('application/json')) {
+        const data = JSON.parse(responseBody);  // Parse the response body as JSON
+        errorDiv.style.display = 'block';
+        successDiv.style.display = 'none';
+        errorDiv.textContent = data.error;
+      } else {
+        errorDiv.style.display = 'block';
+        successDiv.style.display = 'none';
+        errorDiv.textContent = 'An error occurred while sending the message.';
+      }
     }
   } catch (error) {
-    // Show error message
     errorDiv.style.display = 'block';
     successDiv.style.display = 'none';
     errorDiv.textContent = 'An error occurred while sending the message.';
