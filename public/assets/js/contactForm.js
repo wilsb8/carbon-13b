@@ -7,7 +7,7 @@ form.addEventListener('submit', async (event) => {
 
   try {
     const formData = new FormData(form);
-    const response = await fetch('/index', {
+    const response = await fetch('/', {
       method: 'POST',
       body: formData,
       redirect: 'manual', // Prevent automatic redirect
