@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json())
 
-// static directories
-app.use(express.static('public'));
-app.use(express.static('views'));
+
 
 
 // Router
