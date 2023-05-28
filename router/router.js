@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   res.render('index', { errorMessage: null, successMessage: null });
 });
 
-router.post('/send', (req, res) => {
+router.post('/sendmail', (req, res) => {
     console.log("POST Fired!");
     console.log(req.body)
     // output for our message
